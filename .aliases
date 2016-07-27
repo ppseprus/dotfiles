@@ -12,8 +12,9 @@ alias repo="cd ${development}/repositories";
 alias ws="cd ${development}/workspace";
 unset development;
 
-# open ~/.bash_profile
+# ~/.bash_profile
 alias bp="sudo vim ~/.bash_profile";
+alias sbp="source ~/.bash_profile";
 
 # application shorthands
 alias g="git";
