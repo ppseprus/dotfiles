@@ -6,6 +6,15 @@ for file in ~/.{path,aliases,extra}; do
 done;
 unset file;
 
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+
 # Run multiple installs and updates
 sysupdate() {
     declare -a actions=("softwareupdate -i -a" "npm install npm -g" "npm update -g npm" "npm update -g");
@@ -38,12 +47,3 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';
 };
 export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ ";
-
-# Shell options
-
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob;
-# Append to the Bash history file, rather than overwriting it
-shopt -s histappend;
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell;
