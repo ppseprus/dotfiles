@@ -3,11 +3,6 @@ filetype plugin indent on
 " Enable syntax with the scheme 'slate'
 colorscheme slate
 syntax on
-
-
-" The following settings are borrowed from Mathias Bynens
-" https://github.com/mathiasbynens/dotfiles/blob/master/.vimrc
-
 " Make Vim more useful
 set nocompatible
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
