@@ -13,8 +13,8 @@ alias ws="cd ${development}/workspace";
 unset development;
 
 # ~/.bash_profile
-alias bp="sudo vim ~/.bash_profile";
-alias sbp="source ~/.bash_profile";
+alias vp="sudo vim ~/.bash_profile";
+alias sp="source ~/.bash_profile";
 
 # application shorthands
 alias g="git";
