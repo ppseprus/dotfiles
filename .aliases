@@ -21,7 +21,6 @@ alias g="git";
 alias h="history";
 
 # npm shorthands
-alias npmud="sudo npm update -g npm";
 alias npml="npm list -g --depth=0";
 
 # git shorthands
