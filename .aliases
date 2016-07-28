@@ -45,8 +45,9 @@ else
 	colorflag="-G";
 fi;
 
-alias la="ls -AFhlp ${colorflag}";
-alias ld="ls -Ahl  ${colorflag} | grep --color=never '^d'";
+alias ls="ls ${colorflag} ";
+alias la="ls -AFhlp";
+alias ld="ls -Ahl | grep --color=never '^d'";
 
 # enable colored `grep` output
 alias grep="grep --color=auto";
