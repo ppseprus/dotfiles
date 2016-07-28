@@ -29,9 +29,11 @@ alias gco="git checkout";
 alias gl="git log --decorate --oneline --graph";
 alias gs="git status";
 alias ga="git add";
+alias gai="git add -i";
 alias gc="git commit";
-alias gpo="git push origin master";
+alias gcm="git commit -m ";
 alias gp="git pull";
+alias gpo="git push origin master";
 alias gst="git stash";
 
 # detect which `ls` flavor is in use
