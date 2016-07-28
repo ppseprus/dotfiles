@@ -18,7 +18,7 @@ shopt -s cdspell;
 # System update
 sysupdate() {
 	sudo softwareupdate -i -a;
-}
+};
 
 # Environment update
 envupdate() {

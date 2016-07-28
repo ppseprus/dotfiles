@@ -69,7 +69,7 @@ prompt_git() {
 	else
 		return;
 	fi;
-}
+};
 
 bold='';
 reset="\e[0m";
