@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-
-# My original solution
-
-# Show branch name in bash prompt
-# prompt_git() {
-#     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';
-# };
-# pattern: username@hostname working_directory (current_branch)
-# export PS1="\u@\h \W\[\033[32m\]\$(prompt_git)\[\033[00m\] $ ";
-# pattern: working_directory (current_branch)
-#export PS1="\W\[\033[32m\]\$(prompt_git)\[\033[00m\] $ ";
-
-
 # Below code is heavily inspired by @mathiasbynens' prompt
 # https://github.com/mathiasbynens/dotfiles
 
