@@ -30,8 +30,7 @@ envupdate() {
         echo "Run action: $action";
         sudo ${action};
     done;
-    unset action;
-    unset actions;
+    unset action actions;
 };
 
 # Update dotfiles
