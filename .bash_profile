@@ -15,8 +15,7 @@ shopt -s histappend;
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
-# Do not autocomplete when accidentally pressing Tab on an empty line. (It takes
-# forever and yields "Display all 15 gazillion possibilites?")
+# Do not autocomplete when accidentally pressing Tab on an empty line
 shopt -s no_empty_cmd_completion;
 
 # System update
