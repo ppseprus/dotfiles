@@ -1,3 +1,5 @@
 # dotfiles
 
-A huge amount of code is actually taken from @mathiasBynens' [dotdiles](https://github.com/mathiasbynens/dotfiles/) repository.
+This is a repository to store my dotfiles.
+
+A huge amount of code is actually taken from @mathiasbynens' [dotdiles](https://github.com/mathiasbynens/dotfiles) repository, but @janmoesen's [tilde](https://github.com/janmoesen/tilde) was also a great inspiration.
