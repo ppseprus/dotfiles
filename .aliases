@@ -1,29 +1,29 @@
 #!/usr/bin/env bash
 
-# navigation
+# Navigation
 alias ..="cd ..";
 alias ~="cd ~";
 alias -- -="cd -";
 
-# folder shorthands
+# ~/.bash_profile
+alias vp="sudo vim ~/.bash_profile";
+alias sp="source ~/.bash_profile";
+
+# Shorthands for folders
 development="/Volumes/hdd/development";
 alias dev="cd ${development}";
 alias repo="cd ${development}/repositories";
 alias ws="cd ${development}/workspace";
 unset development;
 
-# ~/.bash_profile
-alias vp="sudo vim ~/.bash_profile";
-alias sp="source ~/.bash_profile";
-
-# application shorthands
+# Shorthands for applications and commands
 alias g="git";
 alias h="history";
 
-# npm shorthands
+# Shorthands for npm
 alias npml="npm list -g --depth=0";
 
-# git shorthands
+# Shorthands for git
 alias gb="git branch --all";
 alias gco="git checkout";
 alias gl="git log --decorate --oneline --graph";
@@ -36,20 +36,18 @@ alias gp="git pull";
 alias gpo="git push origin master";
 alias gst="git stash";
 
-# detect which `ls` flavor is in use
+# Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then
-	# GNU `ls`
-	colorflag="--color";
+	colorflag="--color"; # GNU `ls`
 else
-	# macOS `ls`
-	colorflag="-G";
+	colorflag="-G"; # macOS `ls`
 fi;
 
 alias ls="ls ${colorflag} ";
 alias la="ls -AFhlp";
 alias ld="ls -Ahl | grep --color=never '^d'";
 
-# enable colored `grep` output
+# Enable colored `grep` output
 alias grep="grep --color=auto";
 alias fgrep="fgrep --color=auto";
 alias egrep="egrep --color=auto";
@@ -58,17 +56,17 @@ alias egrep="egrep --color=auto";
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com";
 alias localip="ipconfig getifaddr en0";
 
-# show/hide hidden files in Finder
+# Show/hide hidden files in Finder
 alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder";
 alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder";
 
-# hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder";
+# Show/hide all desktop icons (useful when presenting)
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder";
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder";
 
-# disable/enable Spotlight
-alias spotoff="sudo mdutil -a -i off";
+# Enable/disable Spotlight
 alias spoton="sudo mdutil -a -i on";
+alias spotoff="sudo mdutil -a -i off";
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete";
