@@ -3,6 +3,7 @@
 
 
 # Color schema
+# Leave empty to use default
 COLOR_CHEMA=(
 	"\e[1;33m"	# 0. username color
 	""			# 1. host name color
@@ -13,6 +14,12 @@ COLOR_CHEMA=(
 
 # A variable to reset colors to default
 RESET="\e[0m";
+
+# WWorking directory
+# Leave empty if host should not be visible
+# \w full working directory
+# \W current directory
+WORKING_DIRECTORY="\W";
 
 # The sign between the user and host names
 UH_SIGN="@";
@@ -89,7 +96,7 @@ PS1="$(color ${COLOR_CHEMA[0]})\u$(color ${RESET})";
 PS1+="${UH_SIGN}";
 PS1+="$(color ${COLOR_CHEMA[1]})\h$(color ${RESET})";
 PS1+=" ";
-PS1+="$(color ${COLOR_CHEMA[2]})\W$(color ${RESET})";
+PS1+="$(color ${COLOR_CHEMA[2]})${WORKING_DIRECTORY}$(color ${RESET})";
 PS1+="\$(git_prompt \"$(color ${COLOR_CHEMA[3]})\" \"$(color ${COLOR_CHEMA[4]})\" )$(color ${RESET})";
 PS1+=" ";
 PS1+="${PROMPT_SIGN} ";
