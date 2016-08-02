@@ -29,11 +29,18 @@ fi;
 # 3. stashed
 GIT_FLAGS=("+" "!" "?" "$");
 
+
+
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM="gnome-256color";
 elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM="xterm-256color";
 fi;
+
+
+color() {
+	echo -e "\[${1}\]";
+};
 
 git_prompt() {
 	local flags="";
@@ -79,13 +86,13 @@ git_prompt() {
 };
 
 # Set the terminal title and prompt
-PS1="\[${userStyle}\]\u";
-PS1+="\[${reset}\]@\h";
+PS1="$(color ${userStyle})\u";
+PS1+="$(color ${reset})@\h";
 PS1+=" ";
-PS1+="\[${blue}\]\W";
-PS1+="\$(git_prompt \"\[${green}\]\" \"\[${red}\]\")";
+PS1+="$(color ${blue})\W";
+PS1+="\$(git_prompt \"$(color ${green})\" \"$(color ${red})\" )";
 PS1+=" ";
-PS1+="\[${reset}\]\$ ";
+PS1+="$(color ${reset})\$ ";
 export PS1;
 
 PS2="\[${yellow}\]→ \[${reset}\]";
