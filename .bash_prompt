@@ -123,10 +123,10 @@ git_prompt() {
 
 		fi;
 
-		[ -n "${branch}" ] && branch=" ${branch}";
-		[ -n "${flags}" ] && flags=" ${flags}";
+		[ -n "${branch}" ] && branch=" ${1}${branch}";
+		[ -n "${flags}" ] && flags=" ${2}${flags}";
 
-		echo -e "${1}${branch}${2}${flags}";
+		echo -e "${branch}${flags}";
 	else
 		return;
 	fi;
