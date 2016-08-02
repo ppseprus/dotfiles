@@ -12,7 +12,7 @@ fi;
 # Leave empty to use default
 # 	38;5;colorCode where `colorCode` is used as a foreground color
 #  	48;5;colorCode where `colorCode` is used as a background color
-COLOR_CHEMA=(
+COLOR_SCHEMA=(
 	"\e[1;38;5;227m" # 0. username color
 	"\e[1;38;5;227m" # 1. host name color
 	"\e[1;38;5;043m" # 2. working directory color
@@ -96,12 +96,12 @@ git_prompt() {
 };
 
 # Set the terminal title and prompt
-PS1="$(color ${COLOR_CHEMA[0]})\u$(color ${RESET})";
+PS1="$(color ${COLOR_SCHEMA[0]})\u$(color ${RESET})";
 PS1+="${UH_SIGN}";
-PS1+="$(color ${COLOR_CHEMA[1]})\h$(color ${RESET})";
+PS1+="$(color ${COLOR_SCHEMA[1]})\h$(color ${RESET})";
 PS1+=" ";
-PS1+="$(color ${COLOR_CHEMA[2]})${WORKING_DIRECTORY}$(color ${RESET})";
-PS1+="\$(git_prompt \"$(color ${COLOR_CHEMA[3]})\" \"$(color ${COLOR_CHEMA[4]})\" )$(color ${RESET})";
+PS1+="$(color ${COLOR_SCHEMA[2]})${WORKING_DIRECTORY}$(color ${RESET})";
+PS1+="\$(git_prompt \"$(color ${COLOR_SCHEMA[3]})\" \"$(color ${COLOR_SCHEMA[4]})\" )$(color ${RESET})";
 PS1+="${BEFORE_PROMPT_SIGN}";
 PS1+="${PROMPT_SIGN} ";
 
