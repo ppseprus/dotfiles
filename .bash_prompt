@@ -60,7 +60,10 @@ BEFORE_PROMPT_SIGN=" ";
 # Prompt sign
 # The sign at the beginning of a prompt command
 # :string
-PROMPT_SIGN="$";
+# NOTE
+# Prompt Statement variables on ss64.com
+# `\$` If you are not root, inserts a "$"; if you are root, you get a "#"  (root uid = 0)
+PROMPT_SIGN="\$";
 
 # Parse colors
 # A function to keep color schemas somewhat human-readable
