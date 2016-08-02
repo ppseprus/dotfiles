@@ -7,24 +7,25 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM="xterm-256color";
 fi;
 
+# A variable to reset colors to default
+RESET="\e[0m";
+
 # Color schema with 256 colors
 # In specific order
-# Leave empty to use default
-# 	38;5;colorCode where `colorCode` is used as a foreground color
-#  	48;5;colorCode where `colorCode` is used as a background color
+# Use the `RESET` variable for default color
+# `38;5;colorCode` where `colorCode` is used as a foreground color
+# `48;5;colorCode` where `colorCode` is used as a background color
 COLOR_SCHEMA=(
 	"\e[1;38;5;227m" # 0. username color
 	"\e[1;38;5;227m" # 1. host name color
 	"\e[1;38;5;043m" # 2. working directory color
 	"\e[1;38;5;038m" # 3. git branch color
 	"\e[1;38;5;124m" # 4. git flags color
+	"${RESET}" # 5. prompt sign color
+	"${RESET}" # 6. user/host sign color
 );
 
-# A variable to reset colors to default
-RESET="\e[0m";
-
 # Working directory
-# Leave empty if host should not be visible
 # Use `\w` for a full working directory
 # Use `\W` for the current directory
 WORKING_DIRECTORY="\W";
@@ -49,7 +50,23 @@ BEFORE_PROMPT_SIGN=" ";
 PROMPT_SIGN="$";
 
 color() {
-	echo -e "\[${1}\]";
+	if [ -n ${1} ]; then
+		echo -e "\[${1}\]";
+	else
+		return;
+	fi;
+};
+
+parse() {
+	if [ -n "${2}" ]; then
+		if [ -n "${1}" ]; then
+			echo -e "$(color ${1})${2}$(color ${RESET})";
+		else
+			echo -e "${2}";
+		fi;
+	else
+		return;
+	fi;
 };
 
 git_prompt() {
@@ -95,13 +112,14 @@ git_prompt() {
 };
 
 # Set the terminal title and prompt
-PS1="$(color ${COLOR_SCHEMA[0]})\u$(color ${RESET})";
-PS1+="${UH_SIGN}";
-PS1+="$(color ${COLOR_SCHEMA[1]})\h$(color ${RESET})";
+PS1="$(parse ${COLOR_SCHEMA[0]} "\u")";
+PS1+="$(parse ${COLOR_SCHEMA[6]} ${UH_SIGN})";
+PS1+="$(parse ${COLOR_SCHEMA[1]} "\h")";
 PS1+=" ";
-PS1+="$(color ${COLOR_SCHEMA[2]})${WORKING_DIRECTORY}$(color ${RESET})";
-PS1+="\$(git_prompt \"$(color ${COLOR_SCHEMA[3]})\" \"$(color ${COLOR_SCHEMA[4]})\" )$(color ${RESET})";
+PS1+="$(parse ${COLOR_SCHEMA[2]} ${WORKING_DIRECTORY})";
+PS1+="\$(git_prompt \"$(color ${COLOR_SCHEMA[3]})\" \"$(color ${COLOR_SCHEMA[4]})\")$(color ${RESET})";
 PS1+="${BEFORE_PROMPT_SIGN}";
-PS1+="${PROMPT_SIGN} ";
+PS1+="$(parse ${COLOR_SCHEMA[5]} ${PROMPT_SIGN})";
+PS1+=" ";
 
 export PS1;
