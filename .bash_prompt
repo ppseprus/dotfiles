@@ -23,7 +23,7 @@ COLOR_SCHEMA=(
 # A variable to reset colors to default
 RESET="\e[0m";
 
-# WWorking directory
+# Working directory
 # Leave empty if host should not be visible
 # Use `\w` for a full working directory
 # Use `\W` for the current directory
