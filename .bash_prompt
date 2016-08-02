@@ -1,6 +1,11 @@
 # Below code is heavily inspired by @mathiasbynens" prompt
 # https://github.com/mathiasbynens/dotfiles
 
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+	export TERM="gnome-256color";
+elif infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM="xterm-256color";
+fi;
 
 # Color schema
 # Leave empty to use default
@@ -35,14 +40,6 @@ GIT_FLAGS=(
 	"?"	# 2. untracked
 	"$"	# 3. stashed
 );
-
-
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM="gnome-256color";
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM="xterm-256color";
-fi;
-
 
 color() {
 	echo -e "\[${1}\]";
