@@ -32,10 +32,10 @@ WORKING_DIRECTORY="\W";
 # Git flags are used to show if the Git branch is not clean
 # In specific order
 GIT_FLAGS=(
-	"+"	# 0. uncommited
-	"!"	# 1. unstaged
-	"?"	# 2. untracked
-	"$"	# 3. stashed
+	"+"	# 0. uncommited files on branch
+	"!"	# 1. unstaged files on branch
+	"?"	# 2. untracked files on branch
+	"$"	# 3. stashed files on branch
 );
 
 # The sign between the user and host names
