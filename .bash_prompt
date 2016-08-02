@@ -86,11 +86,13 @@ git_prompt() {
 };
 
 # Set the terminal title and prompt
-PS1="$(color ${userStyle})\u";
-PS1+="$(color ${reset})@\h";
+PS1="$(color ${userStyle})\u$(color ${reset})";
+PS1+="@";
+PS1+="$(color ${reset})\h$(color ${reset})";
 PS1+=" ";
-PS1+="$(color ${blue})\W";
-PS1+="\$(git_prompt \"$(color ${green})\" \"$(color ${red})\" )";
+PS1+="$(color ${blue})\W$(color ${reset})";
+PS1+="\$(git_prompt \"$(color ${green})\" \"$(color ${red})\" )$(color ${reset})";
 PS1+=" ";
-PS1+="$(color ${reset})\$ ";
+PS1+="\$ ";
+
 export PS1;
