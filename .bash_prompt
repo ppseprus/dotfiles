@@ -94,6 +94,3 @@ PS1+="\$(git_prompt \"$(color ${green})\" \"$(color ${red})\" )";
 PS1+=" ";
 PS1+="$(color ${reset})\$ ";
 export PS1;
-
-PS2="\[${yellow}\]→ \[${reset}\]";
-export PS2;
