@@ -8,9 +8,10 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 fi;
 
 # Color schema with 256 colors
+# In specific order
 # Leave empty to use default
-# 	38;5;colorCode uses `colorCode` as a foreground color
-#  	48;5;colorCode uses `colorCode` as a background color
+# 	38;5;colorCode where `colorCode` is used as a foreground color
+#  	48;5;colorCode where `colorCode` is used as a background color
 COLOR_CHEMA=(
 	"\e[1;38;5;227m" # 0. username color
 	"\e[1;38;5;227m" # 1. host name color
@@ -24,12 +25,12 @@ RESET="\e[0m";
 
 # WWorking directory
 # Leave empty if host should not be visible
-# \w full working directory
-# \W current directory
+# Use `\w` for a full working directory
+# Use `\W` for the current directory
 WORKING_DIRECTORY="\W";
 
 # Git flags are used to show if the Git branch is not clean
-# In order of usage:
+# In specific order
 GIT_FLAGS=(
 	"+"	# 0. uncommited
 	"!"	# 1. unstaged
