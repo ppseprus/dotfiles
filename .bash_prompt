@@ -7,14 +7,16 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM="xterm-256color";
 fi;
 
-# Color schema
+# Color schema with 256 colors
 # Leave empty to use default
+# 	38;5;colorCode uses `colorCode` as a foreground color
+#  	48;5;colorCode uses `colorCode` as a background color
 COLOR_CHEMA=(
-	"\e[1;33m"	# 0. username color
-	""			# 1. host name color
-	"\e[1;34m"	# 2. working directory color
-	"\e[1;32m"	# 3. git branch color
-	"\e[1;31m"	# 4. git flags color
+	"\e[1;38;5;227m"	# 0. username color
+	"\e[1;38;5;227m"	# 1. host name color
+	"\e[1;38;5;043m"	# 2. working directory color
+	"\e[1;38;5;038m"	# 3. git branch color
+	"\e[1;38;5;124m"	# 4. git flags color
 );
 
 # A variable to reset colors to default
