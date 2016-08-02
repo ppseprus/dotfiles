@@ -24,6 +24,9 @@ fi;
 # The sign between the user and host names
 UH_SIGN="@";
 
+# The sign at the beginning of a prompt command
+PROMPT_SIGN="$";
+
 # Git flags are used to show if the Git branch is not clean
 # In order of usage:
 # 0. uncommited
@@ -96,6 +99,6 @@ PS1+=" ";
 PS1+="$(color ${blue})\W$(color ${reset})";
 PS1+="\$(git_prompt \"$(color ${green})\" \"$(color ${red})\" )$(color ${reset})";
 PS1+=" ";
-PS1+="\$ ";
+PS1+="${PROMPT_SIGN} ";
 
 export PS1;
