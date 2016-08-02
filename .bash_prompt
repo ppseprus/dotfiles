@@ -21,6 +21,9 @@ else
 	userStyle="${orange}";
 fi;
 
+# The sign between the user and host names
+UH_SIGN="@";
+
 # Git flags are used to show if the Git branch is not clean
 # In order of usage:
 # 0. uncommited
@@ -87,7 +90,7 @@ git_prompt() {
 
 # Set the terminal title and prompt
 PS1="$(color ${userStyle})\u$(color ${reset})";
-PS1+="@";
+PS1+="${UH_SIGN}";
 PS1+="$(color ${reset})\h$(color ${reset})";
 PS1+=" ";
 PS1+="$(color ${blue})\W$(color ${reset})";
