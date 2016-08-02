@@ -7,7 +7,7 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM="xterm-256color";
 fi;
 
-prompt_git() {
+git_prompt() {
 	local flags="";
 	local branch="";
 
@@ -75,7 +75,7 @@ PS1="\[${userStyle}\]\u";
 PS1+="\[${reset}\]@\h";
 PS1+=" ";
 PS1+="\[${blue}\]\W";
-PS1+="\$(prompt_git \"\[${green}\]\" \"\[${red}\]\")";
+PS1+="\$(git_prompt \"\[${green}\]\" \"\[${red}\]\")";
 PS1+=" ";
 PS1+="\[${reset}\]\$ ";
 export PS1;
