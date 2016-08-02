@@ -12,11 +12,11 @@ fi;
 # 	38;5;colorCode uses `colorCode` as a foreground color
 #  	48;5;colorCode uses `colorCode` as a background color
 COLOR_CHEMA=(
-	"\e[1;38;5;227m"	# 0. username color
-	"\e[1;38;5;227m"	# 1. host name color
-	"\e[1;38;5;043m"	# 2. working directory color
-	"\e[1;38;5;038m"	# 3. git branch color
-	"\e[1;38;5;124m"	# 4. git flags color
+	"\e[1;38;5;227m" # 0. username color
+	"\e[1;38;5;227m" # 1. host name color
+	"\e[1;38;5;043m" # 2. working directory color
+	"\e[1;38;5;038m" # 3. git branch color
+	"\e[1;38;5;124m" # 4. git flags color
 );
 
 # A variable to reset colors to default
@@ -28,12 +28,6 @@ RESET="\e[0m";
 # \W current directory
 WORKING_DIRECTORY="\W";
 
-# The sign between the user and host names
-UH_SIGN="@";
-
-# The sign at the beginning of a prompt command
-PROMPT_SIGN="$";
-
 # Git flags are used to show if the Git branch is not clean
 # In order of usage:
 GIT_FLAGS=(
@@ -42,6 +36,16 @@ GIT_FLAGS=(
 	"?"	# 2. untracked
 	"$"	# 3. stashed
 );
+
+# The sign between the user and host names
+UH_SIGN="@";
+
+# Before prompt sign
+# Use `\n` to prompt in a new line
+BEFORE_PROMPT_SIGN=" ";
+
+# The sign at the beginning of a prompt command
+PROMPT_SIGN="$";
 
 color() {
 	echo -e "\[${1}\]";
@@ -97,7 +101,7 @@ PS1+="$(color ${COLOR_CHEMA[1]})\h$(color ${RESET})";
 PS1+=" ";
 PS1+="$(color ${COLOR_CHEMA[2]})${WORKING_DIRECTORY}$(color ${RESET})";
 PS1+="\$(git_prompt \"$(color ${COLOR_CHEMA[3]})\" \"$(color ${COLOR_CHEMA[4]})\" )$(color ${RESET})";
-PS1+=" ";
+PS1+="${BEFORE_PROMPT_SIGN}";
 PS1+="${PROMPT_SIGN} ";
 
 export PS1;
