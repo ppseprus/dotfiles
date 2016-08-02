@@ -132,7 +132,7 @@ git_prompt() {
 	fi;
 };
 
-# Set the terminal prompt
+# Set the terminal prompt statement
 PS1="";
 
 PS1+=$(parse "${COLOR_SCHEMA[0]}" "\u");
