@@ -49,7 +49,7 @@ GIT_FLAGS=(
 # Username/host sign
 # The sign between the user and host names
 # :string
-UH_SIGN="@";
+USER_HOST_SIGN="@";
 
 # Before-prompt sign
 # :string
@@ -133,7 +133,7 @@ git_prompt() {
 PS1="";
 
 PS1+=$(parse "${COLOR_SCHEMA[0]}" "\u");
-PS1+=$(parse "${COLOR_SCHEMA[6]}" ${UH_SIGN});
+PS1+=$(parse "${COLOR_SCHEMA[6]}" ${USER_HOST_SIGN});
 PS1+=$(parse "${COLOR_SCHEMA[1]}" "\h");
 
 PS1+=" ";
