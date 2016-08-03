@@ -79,7 +79,7 @@ PROMPT_SIGN="\$";
 # ${1}:colorCode
 # return :string
 parse_color() {
-	echo -e "\[\e[${1}\]";
+	echo -e "\[\033[${1}\]";
 };
 
 # Parse text
