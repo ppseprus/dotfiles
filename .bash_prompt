@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Prompt Statement variables on ss64.com
+# http://ss64.com/bash/syntax-prompt.html
+
 # Below code is heavily inspired by @mathiasbynens" prompt
 # https://github.com/mathiasbynens/dotfiles
 
@@ -31,8 +34,9 @@ COLOR_SCHEMA=(
 	"${bold}${foreground}043" # 2. working directory color
 	"${bold}${foreground}038" # 3. git branch color
 	"${highlight}${foreground}124;${bold}${background}15" # 4. git flags color
-	"" # 5. prompt sign color
+	"" # 5. PS1 sign color
 	"" # 6. user/host sign color
+	"" # 7. PS2 sign color
 );
 
 # Working directory
@@ -71,7 +75,8 @@ BEFORE_PROMPT_SIGN=$' ';
 # NOTE
 # Prompt Statement variables on ss64.com
 # `\$` If you are not root, inserts a "$"; if you are root, you get a "#"  (root uid = 0)
-PROMPT_SIGN=$'\$';
+PROMPT_SIGN_1=$'\$';
+PROMPT_SIGN_2=$'>';
 
 # Parse colors
 # A function to keep color schemas somewhat human-readable
@@ -142,7 +147,8 @@ prompt_git() {
 	fi;
 };
 
-# Set the terminal prompt statement
+# Prompt Statement 1
+# PS1 – Default interactive prompt
 PS1="";
 
 PS1+=$(parse_text "${COLOR_SCHEMA[0]}" "\u");
@@ -156,7 +162,16 @@ PS1+=$(parse_text "${COLOR_SCHEMA[2]}" ${WORKING_DIRECTORY});
 PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[3]})\" \"$(parse_color ${COLOR_SCHEMA[4]})\")$(parse_color)";
 
 PS1+=${BEFORE_PROMPT_SIGN};
-PS1+=$(parse_text "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN});
+PS1+=$(parse_text "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN_1});
 PS1+=" ";
 
 export PS1;
+
+# Prompt Statement 2
+# PS2 – Continuation interactive prompt (when a long command is broken up with \ at the end of the line) default=">"
+PS2="";
+
+PS2+=$(parse_text "${COLOR_SCHEMA[7]}" ${PROMPT_SIGN_2});
+PS2+=" ";
+
+export PS2;
