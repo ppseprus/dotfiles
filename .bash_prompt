@@ -79,7 +79,7 @@ PROMPT_SIGN="\$";
 # ${1}:colorCode
 # return :string
 parse_color() {
-	echo "\[\e[${1}\]";
+	echo -e "\[\e[${1}\]";
 };
 
 # Parse text
@@ -90,9 +90,9 @@ parse_color() {
 parse_text() {
 	if [ -n "${2}" ]; then
 		if [ -n "${1}" ]; then
-			echo "$(parse_color ${1})${2}$(parse_color ${RESET_TEXT})";
+			echo -e "$(parse_color ${1})${2}$(parse_color ${RESET_TEXT})";
 		else
-			echo "${2}";
+			echo -e "${2}";
 		fi;
 	else
 		return;
@@ -135,7 +135,7 @@ prompt_git() {
 		[ -n "${branch}" ] && branch=" ${1}${branch}";
 		[ -n "${flags}" ] && flags=" ${2}${flags}";
 
-		echo "${branch}${flags}";
+		echo -e "${branch}${flags}";
 	else
 		return;
 	fi;
