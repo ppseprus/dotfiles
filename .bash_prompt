@@ -12,6 +12,16 @@ fi;
 # :colorCode
 DEFAULT_COLOR="0m";
 
+# Text attributes
+bold="1;";
+dim="2;";
+blink="5;";
+underline="4;";
+highlight="7;";
+
+foreground="38;5;";
+background="48;5;";
+
 # Color schema
 # An ordered list of colors to create a palette
 # :Array<colorCodes>
@@ -20,11 +30,11 @@ DEFAULT_COLOR="0m";
 # `38;5;colorCode` where `colorCode` is used as a foreground color
 # `48;5;colorCode` where `colorCode` is used as a background color
 COLOR_SCHEMA=(
-	"1;38;5;227m" # 0. username color
-	"1;38;5;227m" # 1. host name color
-	"1;38;5;043m" # 2. working directory color
-	"1;38;5;038m" # 3. git branch color
-	"7;38;5;124;1;48;5;15m" # 4. git flags color
+	"${bold}${foreground}227m" # 0. username color
+	"${bold}${foreground}227m" # 1. host name color
+	"${bold}${foreground}043m" # 2. working directory color
+	"${bold}${foreground}038m" # 3. git branch color
+	"${highlight}${foreground}124;${bold}${background}15m" # 4. git flags color
 	"" # 5. prompt sign color
 	"" # 6. user/host sign color
 );
