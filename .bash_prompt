@@ -85,8 +85,8 @@ parse_color() {
 # ${2}:string
 # return :string
 parse_text() {
-	if [ -n "${2}" ]; then
-		if [ -n "${1}" ]; then
+	if [ "${2}" ]; then
+		if [ "${1}" ]; then
 			echo -e "$(parse_color ${1})${2}$(parse_color)";
 		else
 			echo -e "${2}";
@@ -122,15 +122,15 @@ prompt_git() {
 			if ! $(git diff-files --quiet --ignore-submodules --); then flags+=${GIT_FLAGS[1]}; fi;
 
 			# Check for untracked files
-			if [ -n "$(git ls-files --others --exclude-standard)" ]; then flags+=${GIT_FLAGS[2]}; fi;
+			if [ "$(git ls-files --others --exclude-standard)" ]; then flags+=${GIT_FLAGS[2]}; fi;
 
 			# Check for stashed files
 			if $(git rev-parse --verify refs/stash &>/dev/null); then flags+=${GIT_FLAGS[3]}; fi;
 
 		fi;
 
-		[ -n "${branch}" ] && branch=" ${1}${branch}";
-		[ -n "${flags}" ] && flags=" ${2}${flags}";
+		[ "${branch}" ] && branch=" ${1}${branch}";
+		[ "${flags}" ] && flags=" ${2}${flags}";
 
 		echo -e "${branch}${flags}";
 	else
