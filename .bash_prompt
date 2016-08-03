@@ -90,15 +90,15 @@ parse_color() {
 
 # Parse text
 # A function to parse text with attributes and reset them afterwards
-# ${1}:integer
-# ${2}:string
+# ${1}:string
+# ${2}:integer
 # return :string
 parse_text() {
-	if [ "${2}" ]; then
-		if [ "${1}" ]; then
-			echo -e "$(parse_color ${COLOR_SCHEMA[${1}]})${2}$(parse_color)";
+	if [ "${1}" ]; then
+		if [ "${2}" ]; then
+			echo -e "$(parse_color ${COLOR_SCHEMA[${2}]})${1}$(parse_color)";
 		else
-			echo -e "${2}";
+			echo -e "${1}";
 		fi;
 	else
 		return;
@@ -151,18 +151,18 @@ prompt_git() {
 # PS1 – Default interactive prompt
 PS1="";
 
-PS1+=$(parse_text 0 "\u");
-PS1+=$(parse_text 1 ${USER_HOST_SIGN});
-PS1+=$(parse_text 2 "\h");
+PS1+=$(parse_text "\u" 0);
+PS1+=$(parse_text ${USER_HOST_SIGN} 1);
+PS1+=$(parse_text "\h" 2);
 
 PS1+=" ";
 
-PS1+=$(parse_text 3 ${WORKING_DIRECTORY});
+PS1+=$(parse_text ${WORKING_DIRECTORY} 3);
 
 PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[4]})\" \"$(parse_color ${COLOR_SCHEMA[5]})\")$(parse_color)";
 
 PS1+=${BEFORE_PROMPT_SIGN};
-PS1+=$(parse_text 6 ${PROMPT_SIGN_1});
+PS1+=$(parse_text ${PROMPT_SIGN_1} 6);
 PS1+=" ";
 
 export PS1;
@@ -171,7 +171,7 @@ export PS1;
 # PS2 – Continuation interactive prompt (when a long command is broken up with \ at the end of the line) default=">"
 PS2="";
 
-PS2+=$(parse_text 7 ${PROMPT_SIGN_2});
+PS2+=$(parse_text ${PROMPT_SIGN_2} 7);
 PS2+=" ";
 
 export PS2;
