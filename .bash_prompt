@@ -30,12 +30,12 @@ background="48;5;";
 # `48;5;colorCode` where `colorCode` is used as a background color
 COLOR_SCHEMA=(
 	"${bold}${foreground}227" # 0. username color
-	"${bold}${foreground}227" # 1. host name color
-	"${bold}${foreground}043" # 2. working directory color
-	"${bold}${foreground}038" # 3. git branch color
-	"${highlight}${foreground}124;${bold}${background}15" # 4. git flags color
-	"" # 5. PS1 sign color
-	"" # 6. user/host sign color
+	"" # 1. user/host sign color
+	"${bold}${foreground}227" # 2. host name color
+	"${bold}${foreground}043" # 3. working directory color
+	"${bold}${foreground}038" # 4. git branch color
+	"${highlight}${foreground}124;${bold}${background}15" # 5. git flags color
+	"" # 6. PS1 sign color
 	"" # 7. PS2 sign color
 );
 
@@ -152,17 +152,17 @@ prompt_git() {
 PS1="";
 
 PS1+=$(parse_text "${COLOR_SCHEMA[0]}" "\u");
-PS1+=$(parse_text "${COLOR_SCHEMA[6]}" ${USER_HOST_SIGN});
-PS1+=$(parse_text "${COLOR_SCHEMA[1]}" "\h");
+PS1+=$(parse_text "${COLOR_SCHEMA[1]}" ${USER_HOST_SIGN});
+PS1+=$(parse_text "${COLOR_SCHEMA[2]}" "\h");
 
 PS1+=" ";
 
-PS1+=$(parse_text "${COLOR_SCHEMA[2]}" ${WORKING_DIRECTORY});
+PS1+=$(parse_text "${COLOR_SCHEMA[3]}" ${WORKING_DIRECTORY});
 
-PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[3]})\" \"$(parse_color ${COLOR_SCHEMA[4]})\")$(parse_color)";
+PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[4]})\" \"$(parse_color ${COLOR_SCHEMA[5]})\")$(parse_color)";
 
 PS1+=${BEFORE_PROMPT_SIGN};
-PS1+=$(parse_text "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN_1});
+PS1+=$(parse_text "${COLOR_SCHEMA[6]}" ${PROMPT_SIGN_1});
 PS1+=" ";
 
 export PS1;
