@@ -40,7 +40,7 @@ COLOR_SCHEMA=(
 # NOTE
 # Use `\w` for a full working directory
 # Use `\W` for the current directory
-WORKING_DIRECTORY="\W";
+WORKING_DIRECTORY=$'\W';
 
 # Git flags
 # An ordered list of signs to highlight if the branch is not clean
@@ -55,13 +55,15 @@ GIT_FLAGS=(
 # Username/host sign
 # The sign between the user and host names
 # :string
-USER_HOST_SIGN="@";
+# NOTE
+# If left empty or space-only, nothing will appear in the prompt statement
+USER_HOST_SIGN=$'@';
 
 # Before-prompt sign
 # :string
 # NOTE
 # Use `\n` to prompt in a new line
-BEFORE_PROMPT_SIGN=" ";
+BEFORE_PROMPT_SIGN=$' ';
 
 # Prompt sign
 # The sign at the beginning of a prompt command
@@ -69,7 +71,7 @@ BEFORE_PROMPT_SIGN=" ";
 # NOTE
 # Prompt Statement variables on ss64.com
 # `\$` If you are not root, inserts a "$"; if you are root, you get a "#"  (root uid = 0)
-PROMPT_SIGN="\$";
+PROMPT_SIGN=$'\$';
 
 # Parse colors
 # A function to keep color schemas somewhat human-readable
