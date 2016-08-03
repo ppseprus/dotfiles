@@ -7,11 +7,6 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM="xterm-256color";
 fi;
 
-# Reset text
-# A variable to reset colors and other text attributes to default
-# :colorCode
-RESET_TEXT="0";
-
 # Text attributes
 bold="1;";
 dim="2;";
@@ -78,19 +73,21 @@ PROMPT_SIGN="\$";
 # A function to keep color schemas somewhat human-readable
 # ${1}:colorCode
 # return :string
+# NOTE
+# If there is no input, the function will return a reset attribute
 parse_color() {
 	echo -e "\[\033[${1}m\]";
 };
 
 # Parse text
-# A function to parse text for the PS1 variable
+# A function to parse text with attributes and reset them afterwards
 # ${1}:colorCode
 # ${2}:string
 # return :string
 parse_text() {
 	if [ -n "${2}" ]; then
 		if [ -n "${1}" ]; then
-			echo -e "$(parse_color ${1})${2}$(parse_color ${RESET_TEXT})";
+			echo -e "$(parse_color ${1})${2}$(parse_color)";
 		else
 			echo -e "${2}";
 		fi;
@@ -152,7 +149,7 @@ PS1+=" ";
 
 PS1+=$(parse_text "${COLOR_SCHEMA[2]}" ${WORKING_DIRECTORY});
 
-PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[3]})\" \"$(parse_color ${COLOR_SCHEMA[4]})\")$(parse_color ${RESET_TEXT})";
+PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[3]})\" \"$(parse_color ${COLOR_SCHEMA[4]})\")$(parse_color)";
 
 PS1+=${BEFORE_PROMPT_SIGN};
 PS1+=$(parse_text "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN});
