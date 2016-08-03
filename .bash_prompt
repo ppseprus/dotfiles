@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Below code is heavily inspired by @mathiasbynens" prompt
 # https://github.com/mathiasbynens/dotfiles
 
