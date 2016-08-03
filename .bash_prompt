@@ -69,19 +69,19 @@ PROMPT_SIGN="\$";
 # A function to keep color schemas somewhat human-readable
 # ${1}:colorCode
 # return :string
-color() {
+parse_color() {
 	echo "\[\e[${1}\]";
 };
 
-# Parse line blocks
-# A function to parse blocks for the PS1 variable
+# Parse text
+# A function to parse text for the PS1 variable
 # ${1}:colorCode
 # ${2}:string
 # return :string
-parse() {
+parse_text() {
 	if [ -n "${2}" ]; then
 		if [ -n "${1}" ]; then
-			echo "$(color ${1})${2}$(color ${DEFAULT_COLOR})";
+			echo "$(parse_color ${1})${2}$(parse_color ${DEFAULT_COLOR})";
 		else
 			echo "${2}";
 		fi;
@@ -90,7 +90,7 @@ parse() {
 	fi;
 };
 
-git_prompt() {
+prompt_git() {
 	# Check if the current directory is in a Git repository
 	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == "0" ]; then
 		local branch="";
@@ -135,18 +135,18 @@ git_prompt() {
 # Set the terminal prompt statement
 PS1="";
 
-PS1+=$(parse "${COLOR_SCHEMA[0]}" "\u");
-PS1+=$(parse "${COLOR_SCHEMA[6]}" ${USER_HOST_SIGN});
-PS1+=$(parse "${COLOR_SCHEMA[1]}" "\h");
+PS1+=$(parse_text "${COLOR_SCHEMA[0]}" "\u");
+PS1+=$(parse_text "${COLOR_SCHEMA[6]}" ${USER_HOST_SIGN});
+PS1+=$(parse_text "${COLOR_SCHEMA[1]}" "\h");
 
 PS1+=" ";
 
-PS1+=$(parse "${COLOR_SCHEMA[2]}" ${WORKING_DIRECTORY});
+PS1+=$(parse_text "${COLOR_SCHEMA[2]}" ${WORKING_DIRECTORY});
 
-PS1+="\$(git_prompt \"$(color ${COLOR_SCHEMA[3]})\" \"$(color ${COLOR_SCHEMA[4]})\")$(color ${DEFAULT_COLOR})";
+PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[3]})\" \"$(parse_color ${COLOR_SCHEMA[4]})\")$(parse_color ${DEFAULT_COLOR})";
 
 PS1+=${BEFORE_PROMPT_SIGN};
-PS1+=$(parse "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN});
+PS1+=$(parse_text "${COLOR_SCHEMA[5]}" ${PROMPT_SIGN});
 PS1+=" ";
 
 export PS1;
