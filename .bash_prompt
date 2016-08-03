@@ -44,10 +44,10 @@ WORKING_DIRECTORY="\W";
 # An ordered list of signs to highlight if the branch is not clean
 # :Array<string>
 GIT_FLAGS=(
-	"+"	# 0. uncommited files on branch
-	"!"	# 1. unstaged files on branch
-	"?"	# 2. untracked files on branch
-	"$"	# 3. stashed files on branch
+	"+" # 0. uncommited files on branch
+	"!" # 1. unstaged files on branch
+	"?" # 2. untracked files on branch
+	"$" # 3. stashed files on branch
 );
 
 # Username/host sign
