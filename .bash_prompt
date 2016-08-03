@@ -10,7 +10,7 @@ fi;
 # Reset text
 # A variable to reset colors and other text attributes to default
 # :colorCode
-RESET_TEXT="0m";
+RESET_TEXT="0";
 
 # Text attributes
 bold="1;";
@@ -29,11 +29,11 @@ background="48;5;";
 # `38;5;colorCode` where `colorCode` is used as a foreground color
 # `48;5;colorCode` where `colorCode` is used as a background color
 COLOR_SCHEMA=(
-	"${bold}${foreground}227m" # 0. username color
-	"${bold}${foreground}227m" # 1. host name color
-	"${bold}${foreground}043m" # 2. working directory color
-	"${bold}${foreground}038m" # 3. git branch color
-	"${highlight}${foreground}124;${bold}${background}15m" # 4. git flags color
+	"${bold}${foreground}227" # 0. username color
+	"${bold}${foreground}227" # 1. host name color
+	"${bold}${foreground}043" # 2. working directory color
+	"${bold}${foreground}038" # 3. git branch color
+	"${highlight}${foreground}124;${bold}${background}15" # 4. git flags color
 	"" # 5. prompt sign color
 	"" # 6. user/host sign color
 );
@@ -79,7 +79,7 @@ PROMPT_SIGN="\$";
 # ${1}:colorCode
 # return :string
 parse_color() {
-	echo -e "\[\033[${1}\]";
+	echo -e "\[\033[${1}m\]";
 };
 
 # Parse text
