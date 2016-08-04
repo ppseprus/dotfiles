@@ -24,7 +24,8 @@ alias h="history";
 alias npml="npm list -g --depth=0";
 
 # Shorthands for git
-alias gb="git branch --all";
+alias gb="git branch";
+alias gba="git branch --all";
 alias gco="git checkout";
 alias gl="git log --decorate --oneline --graph";
 alias gs="git status";
