@@ -1,0 +1,59 @@
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[color]
+	# Use colors in Git commands that are capable of colored output when
+	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	ui = always
+
+[color "branch"]
+	current = 38
+	local = 43
+	remote = normal
+	plain = normal
+
+[color "diff"]
+	context = normal
+	meta = 43
+	frag = 227
+	func = 38
+	old = 124
+	new = 38
+	commit = 227
+	whitespace = 124
+
+[color "decorate"]
+	branch = 43
+	remoteBranch = 227
+	tag = 227
+	stash = 124
+	HEAD = 38
+
+[color "grep"]
+	filename = 38
+	linenumber = 38
+	separator = 227
+	context = normal dim
+	function = 43 bold
+	matchContext = 43 dim
+	match = 43 reverse
+	matchSelected = 43 reverse
+	selected = normal nodim
+
+[color "interactive"]
+	prompt = 227
+	header = 43
+	help = 43
+	error = 124
+
+[color "status"]
+	header = 43
+	added = 38
+	updated = 38
+	changed = 124
+	untracked = 124
+	branch = 43
+	nobranch = 124
+	unmerged = 124
