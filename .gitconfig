@@ -32,15 +32,28 @@
 	HEAD = 38
 
 [color "grep"]
-	filename = 38
-	linenumber = 38
-	separator = 227
-	context = normal dim
+	filename = 43
+	linenumber = 227
+	separator = normal
 	function = 43 bold
-	matchContext = 43 dim
-	match = 43 reverse
-	matchSelected = 43 reverse
-	selected = normal nodim
+
+	# Context is the text that is
+	# not matching, nor selected.
+	context = normal nodim
+
+	# Matched text in selected lines
+	matchSelected = 38 reverse
+
+	# Matched text in non-selected/context lines
+	matchContext = 43 reverse
+
+	# Selection is a line-based term.
+	# By default, the lines with the matching
+	# text are the selected one.
+	# `-v` inverts that, therefore,
+	# the selected lines are the ones where
+	# there is no matching text.
+	selected = 38 nodim
 
 [color "interactive"]
 	prompt = 227
