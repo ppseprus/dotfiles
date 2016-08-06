@@ -3,6 +3,21 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 
+[user]
+	name = ppseprus
+	email = p.seprus@gmail.com
+
+[core]
+	excludesfile = /Users/ppseprus/.gitignore_global
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+
 [color]
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
