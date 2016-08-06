@@ -28,7 +28,7 @@ alias gb="git branch";
 alias gba="git branch --all";
 alias gco="git checkout";
 alias gl="git log --decorate --oneline --graph -n 20";
-alais gltd="git log --decorate --oneline --graph --since=midnight";
+alias gltd="git log --decorate --oneline --graph --since=midnight";
 alias gs="git status";
 alias ga="git add";
 alias gai="git add -i";
