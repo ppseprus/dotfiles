@@ -49,3 +49,11 @@ dotfiles() {
 	source ~/.bash_profile;
 	unset dotfile;
 };
+
+# Update dotfiles via SSH
+# An `scp`-extending function to copy dotfiles to a remote server
+# @param 1 <string> ssh user
+# @param 2 <string> ssh host
+remoteotfiles() {
+	scp -p ~/.{bash_profile,bash_prompt,bashrc,aliases,vimrc} $1@$2:~/;
+}
