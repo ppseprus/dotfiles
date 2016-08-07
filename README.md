@@ -6,7 +6,7 @@ I use both a Mac and a PC, therefore, I'm trying to create a good and consistent
 
 ### Visuals
 
-![Palette for Mac](/../screenshots/images/screenShot1.png?raw=true)
+![Palette for Mac](/../screenshots/images/screenShot2.png?raw=true)
 
 I use Sublime Text with @equinusocio's [Material](https://github.com/equinusocio/material-theme) theme, so the background of the terminal is matched to that.
 
