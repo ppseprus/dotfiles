@@ -15,12 +15,12 @@ Though, on Windows the red is different. For some reason, mingw64 prints it diff
 
 HEX Code | xterm-256color
 --- | ---
-#263138 | terminal bg
-#AF0000 | `124` on Mac
-#FF0000 | `009` on Win
-#00AFD7 | `038`
-#00D7AF | `043`
-#FFFF5F | `227`
+`#263138` | terminal bg
+`#AF0000` | `124` on Mac
+`#FF0000` | `009` on Win
+`#00AFD7` | `038`
+`#00D7AF` | `043`
+`#FFFF5F` | `227`
 
 The Mac palette
 
