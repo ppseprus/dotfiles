@@ -1,0 +1,29 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AutoBackups",
+		"Boxy Theme",
+		"ColorPicker",
+		"CSS Format",
+		"DocBlockr",
+		"EditorConfig",
+		"Emmet",
+		"Focus File on Sidebar",
+		"Git Config",
+		"HTML-CSS-JS Prettify",
+		"JavaScriptNext - ES6 Syntax",
+		"Markdown Preview",
+		"Material Theme",
+		"Package Control",
+		"PackageResourceViewer",
+		"Pug",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"TypeScript",
+		"VimL"
+	]
+}
