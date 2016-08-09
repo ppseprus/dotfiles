@@ -27,7 +27,7 @@ sysupdate() {
 
 # Environment update
 envupdate() {
-	declare -a actions=("npm install npm -g" "npm update -g npm" "npm update -g");
+	declare -a actions=("npm update -g npm" "npm update -g");
 	for action in "${actions[@]}"; do
 		echo "Run action: $action";
 		sudo ${action};
