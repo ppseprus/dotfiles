@@ -8,7 +8,8 @@
 	email = p.seprus@gmail.com
 
 [core]
-	excludesfile = /Users/ppseprus/.gitignore_global
+	attributesfile = ~/.gitattributes
+	excludesfile = ~/.gitignore
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
