@@ -10,7 +10,7 @@ alias vp="sudo vim ~/.bash_profile";
 alias sp="source ~/.bash_profile";
 
 # Shorthands for folders
-development="/Volumes/hdd/development";
+development="~/Desktop/sprs/development";
 alias dev="cd ${development}";
 alias repo="cd ${development}/repositories";
 alias ws="cd ${development}/workspace";
