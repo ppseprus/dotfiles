@@ -42,7 +42,7 @@ envupdate() {
 # cp -af ~/<some directory structure>/dotfiles/<dotfile> ~/<dotfile>
 dotfiles() {
 	sudo -v
-	for dotfile in .{bash_profile,bash_prompt,bashrc,aliases,vimrc}
+	for dotfile in .{bash_profile,bash_prompt,bashrc,aliases,functions,vimrc}
 	do
 		if [ -r $dotfile ] && [ -f $dotfile ]
 		then
