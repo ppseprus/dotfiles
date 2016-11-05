@@ -6,20 +6,22 @@
 # Below code is heavily inspired by @mathiasbynens" prompt
 # https://github.com/mathiasbynens/dotfiles
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-	export TERM="gnome-256color";
-elif infocmp xterm-256color >/dev/null 2>&1; then
-	export TERM="xterm-256color";
-fi;
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1
+then
+	export TERM="gnome-256color"
+elif infocmp xterm-256color >/dev/null 2>&1
+then
+	export TERM="xterm-256color"
+fi
 
 # Text attributes
-bold="1;";
-dim="2;";
-underline="4;";
-highlight="7;";
+bold="1;"
+dim="2;"
+underline="4;"
+highlight="7;"
 
-foreground="38;5;";
-background="48;5;";
+foreground="38;5;"
+background="48;5;"
 
 # Color schema
 # An ordered list of colors to create a palette
@@ -37,14 +39,14 @@ COLOR_SCHEMA=(
 	"${highlight}${foreground}124;${bold}${background}15" # 5. git flags color
 	"" # 6. PS1 sign color
 	"" # 7. PS2 sign color
-);
+)
 
 # Working directory
 # :string
 # NOTE
 # Use `\w` for a full working directory
 # Use `\W` for the current directory
-WORKING_DIRECTORY=$'\W';
+WORKING_DIRECTORY=$'\W'
 
 # Git flags
 # An ordered list of signs to highlight if the branch is not clean
@@ -54,20 +56,20 @@ GIT_FLAGS=(
 	"!" # 1. unstaged files on branch
 	"?" # 2. untracked files on branch
 	"$" # 3. stashed files on branch
-);
+)
 
 # Username/host sign
 # The sign between the user and host names
 # :string
 # NOTE
 # If left empty or space-only, nothing will appear in the prompt statement
-USER_HOST_SIGN=$'@';
+USER_HOST_SIGN=$'@'
 
 # Before-prompt sign
 # :string
 # NOTE
 # Use `\n` to prompt in a new line
-BEFORE_PROMPT_SIGN=$' ';
+BEFORE_PROMPT_SIGN=$' '
 
 # Prompt sign
 # The sign at the beginning of a prompt command
@@ -75,8 +77,8 @@ BEFORE_PROMPT_SIGN=$' ';
 # NOTE
 # Prompt Statement variables on ss64.com
 # `\$` If you are not root, inserts a "$"; if you are root, you get a "#"  (root uid = 0)
-PROMPT_SIGN_1=$'\$';
-PROMPT_SIGN_2=$'>';
+PROMPT_SIGN_1=$'\$'
+PROMPT_SIGN_2=$'>'
 
 # Parse colors
 # A function to keep color schemas somewhat human-readable
@@ -85,8 +87,8 @@ PROMPT_SIGN_2=$'>';
 # NOTE
 # If there is no input, the function will return a reset attribute
 parse_color() {
-	echo -e "\[\033[${1}m\]";
-};
+	echo -e "\[\033[${1}m\]"
+}
 
 # Parse text
 # A function to parse text with attributes and reset them afterwards
@@ -94,84 +96,100 @@ parse_color() {
 # ${2}:integer
 # return :string
 parse_text() {
-	if [ "${1}" ]; then
-		if [ "${2}" ]; then
-			echo -e "$(parse_color ${COLOR_SCHEMA[${2}]})${1}$(parse_color)";
+	if [ "${1}" ]
+	then
+		if [ "${2}" ]
+		then
+			echo -e "$(parse_color ${COLOR_SCHEMA[${2}]})${1}$(parse_color)"
 		else
-			echo -e "${1}";
-		fi;
+			echo -e "${1}"
+		fi
 	else
-		return;
-	fi;
-};
+		return
+	fi
+}
 
 prompt_git() {
 	# Check if the current directory is in a Git repository
-	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == "0" ]; then
-		local branch="";
-		local flags="";
+	if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == "0" ]
+	then
+		local branch=""
+		local flags=""
 
 		# Get the short symbolic ref
 		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
 		# Otherwise, just give up
 		branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
 			git rev-parse --short HEAD 2> /dev/null || \
-			echo "unknown")";
+			echo "unknown")"
 
 		# check if the current directory is in .git before running git checks
-		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == "false" ]; then
+		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == "false" ]
+		then
 
 			# Ensure the index is up to date
-			git update-index --really-refresh -q &>/dev/null;
+			git update-index --really-refresh -q &>/dev/null
 
 			# Check for uncommitted changes in the index
-			if ! $(git diff --quiet --ignore-submodules --cached); then flags+=${GIT_FLAGS[0]}; fi;
+			if ! $(git diff --quiet --ignore-submodules --cached)
+			then
+				flags+=${GIT_FLAGS[0]}
+			fi
 
 			# Check for unstaged changes
-			if ! $(git diff-files --quiet --ignore-submodules --); then flags+=${GIT_FLAGS[1]}; fi;
+			if ! $(git diff-files --quiet --ignore-submodules --)
+			then
+				flags+=${GIT_FLAGS[1]}
+			fi
 
 			# Check for untracked files
-			if [ "$(git ls-files --others --exclude-standard)" ]; then flags+=${GIT_FLAGS[2]}; fi;
+			if [ "$(git ls-files --others --exclude-standard)" ]
+			then
+				flags+=${GIT_FLAGS[2]}
+			fi
 
 			# Check for stashed files
-			if $(git rev-parse --verify refs/stash &>/dev/null); then flags+=${GIT_FLAGS[3]}; fi;
+			if $(git rev-parse --verify refs/stash &>/dev/null)
+			then
+				flags+=${GIT_FLAGS[3]}
+			fi
 
-		fi;
+		fi
 
-		[ "${branch}" ] && branch=" ${1}${branch}";
-		[ "${flags}" ] && flags=" ${2}${flags}";
+		[ "${branch}" ] && branch=" ${1}${branch}"
+		[ "${flags}" ] && flags=" ${2}${flags}"
 
-		echo -e "${branch}${flags}";
+		echo -e "${branch}${flags}"
 	else
-		return;
-	fi;
-};
+		return
+	fi
+}
 
 # Prompt Statement 1
 # PS1 – Default interactive prompt
-PS1="";
+PS1=""
 
-PS1+=$(parse_text "\u" 0);
-PS1+=$(parse_text ${USER_HOST_SIGN} 1);
-PS1+=$(parse_text "\h" 2);
+PS1+=$(parse_text "\u" 0)
+PS1+=$(parse_text ${USER_HOST_SIGN} 1)
+PS1+=$(parse_text "\h" 2)
 
-PS1+=" ";
+PS1+=" "
 
-PS1+=$(parse_text ${WORKING_DIRECTORY} 3);
+PS1+=$(parse_text ${WORKING_DIRECTORY} 3)
 
-PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[4]})\" \"$(parse_color ${COLOR_SCHEMA[5]})\")$(parse_color)";
+PS1+="\$(prompt_git \"$(parse_color ${COLOR_SCHEMA[4]})\" \"$(parse_color ${COLOR_SCHEMA[5]})\")$(parse_color)"
 
-PS1+=${BEFORE_PROMPT_SIGN};
-PS1+=$(parse_text ${PROMPT_SIGN_1} 6);
-PS1+=" ";
+PS1+=${BEFORE_PROMPT_SIGN}
+PS1+=$(parse_text ${PROMPT_SIGN_1} 6)
+PS1+=" "
 
-export PS1;
+export PS1
 
 # Prompt Statement 2
 # PS2 – Continuation interactive prompt (when a long command is broken up with \ at the end of the line) default=">"
-PS2="";
+PS2=""
 
-PS2+=$(parse_text ${PROMPT_SIGN_2} 7);
-PS2+=" ";
+PS2+=$(parse_text ${PROMPT_SIGN_2} 7)
+PS2+=" "
 
-export PS2;
+export PS2

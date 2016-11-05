@@ -1,82 +1,83 @@
 #!/usr/bin/env bash
 
 # Navigation
-alias ..="cd ..";
-alias ~="cd ~";
-alias -- -="cd -";
+alias ..="cd .."
+alias ~="cd ~"
+alias -- -="cd -"
 
 # ~/.bash_profile
-alias vp="sudo vim ~/.bash_profile";
-alias sp="source ~/.bash_profile";
+alias vp="sudo vim ~/.bash_profile"
+alias sp="source ~/.bash_profile"
 
 # Shorthands for folders
-development="~/Desktop/sprs/development";
-alias dev="cd ${development}";
-alias repo="cd ${development}/repositories";
-alias ws="cd ${development}/workspace";
-unset development;
+development="~/Desktop/sprs/development"
+alias dev="cd ${development}"
+alias repo="cd ${development}/repositories"
+alias ws="cd ${development}/workspace"
+unset development
 
 # Shorthands for applications and commands
-alias h="history";
+alias h="history"
 
 # Shorthands for npm
-alias npml="npm list -g --depth=0";
+alias npml="npm list -g --depth=0"
 
 # Shorthands for git
-alias g="git";
-alias ginit="!git init && git commit -m “root” --allow-empty";
-alias gl="git log --decorate --oneline --graph -n 20";
-alias gltd="git log --decorate --oneline --graph --since=midnight";
-alias gb="git branch";
-alias gba="git branch --all";
-alias gco="git checkout";
-alias gs="git status";
-alias ga="git add";
-alias gai="git add -i";
-alias gc="git commit";
-alias gcm="git commit -m ";
-alias amend="git commit --amend";
-alias commend="git commit --amend --no-edit";
-alias gp="git pull";
-alias gpo="git push origin master";
-alias gst="git stash";
+alias g="git"
+alias ginit="!git init && git commit -m “root” --allow-empty"
+alias gl="git log --decorate --oneline --graph -n 20"
+alias gltd="git log --decorate --oneline --graph --since=midnight"
+alias gb="git branch"
+alias gba="git branch --all"
+alias gco="git checkout"
+alias gs="git status"
+alias ga="git add"
+alias gai="git add -i"
+alias gc="git commit"
+alias gcm="git commit -m "
+alias amend="git commit --amend"
+alias commend="git commit --amend --no-edit"
+alias gp="git pull"
+alias gpo="git push origin master"
+alias gst="git stash"
 
 # Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then
-	colorflag="--color"; # GNU `ls`
+if ls --color > /dev/null 2>&1
+then
+	colorflag="--color" # GNU `ls`
 else
-	colorflag="-G"; # macOS `ls`
-fi;
+	colorflag="-G" # macOS `ls`
+fi
 
-alias ls="ls ${colorflag} ";
-alias la="ls -AFhlop";
-alias ld="ls -Ahlo | grep --color=never '^d'";
+alias ls="ls ${colorflag} "
+alias la="ls -AFhlop"
+alias ld="ls -Ahlo | grep --color=never '^d'"
 
 # Enable colored `grep` output
-alias grep="grep --color=auto";
-alias fgrep="fgrep --color=auto";
-alias egrep="egrep --color=auto";
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com";
-alias localip="ipconfig getifaddr en0";
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder";
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder";
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Show/hide all desktop icons (useful when presenting)
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder";
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder";
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 
 # Enable/disable Spotlight
-alias spoton="sudo mdutil -a -i on";
-alias spotoff="sudo mdutil -a -i off";
+alias spoton="sudo mdutil -a -i on"
+alias spotoff="sudo mdutil -a -i off"
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete";
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
 # Finally, clear download history from quarantine. https://mths.be/bum
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'";
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
