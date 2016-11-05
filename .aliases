@@ -24,6 +24,7 @@ alias npml="npm list -g --depth=0";
 
 # Shorthands for git
 alias g="git";
+alias ginit="!git init && git commit -m “root” --allow-empty";
 alias gl="git log --decorate --oneline --graph -n 20";
 alias gltd="git log --decorate --oneline --graph --since=midnight";
 alias gb="git branch";
