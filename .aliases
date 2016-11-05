@@ -17,18 +17,18 @@ alias ws="cd ${development}/workspace";
 unset development;
 
 # Shorthands for applications and commands
-alias g="git";
 alias h="history";
 
 # Shorthands for npm
 alias npml="npm list -g --depth=0";
 
 # Shorthands for git
+alias g="git";
+alias gl="git log --decorate --oneline --graph -n 20";
+alias gltd="git log --decorate --oneline --graph --since=midnight";
 alias gb="git branch";
 alias gba="git branch --all";
 alias gco="git checkout";
-alias gl="git log --decorate --oneline --graph -n 20";
-alias gltd="git log --decorate --oneline --graph --since=midnight";
 alias gs="git status";
 alias ga="git add";
 alias gai="git add -i";
