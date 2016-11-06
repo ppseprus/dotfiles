@@ -1,12 +1,3 @@
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-
-[user]
-	name = ppseprus
-	email = p.seprus@gmail.com
-
 [core]
 	attributesfile = ~/.gitattributes
 	excludesfile = ~/.gitignore
@@ -14,6 +5,15 @@
 	# Make `git rebase` safer on macOS
 	# More info: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/
 	trustctime = false
+
+[user]
+	name = ppseprus
+	email = p.seprus@gmail.com
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
