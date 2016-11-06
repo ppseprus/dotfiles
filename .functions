@@ -21,7 +21,7 @@ envupdate() {
 # cp -af ~/<some directory structure>/dotfiles/<dotfile> ~/<dotfile>
 dotfiles() {
 	sudo -v
-	for dotfile in .{bash_profile,bash_prompt,bashrc,aliases,functions,vimrc}
+	for dotfile in .{bash_profile,bash_prompt,bashrc,gitconfig,gitattributes,gitignore,aliases,functions,vimrc}
 	do
 		if [ -r $dotfile ] && [ -f $dotfile ]
 		then
@@ -38,5 +38,5 @@ dotfiles() {
 # @param 1 <string> ssh user
 # @param 2 <string> ssh host
 remotedotfiles() {
-	scp -p ~/.{bash_profile,bash_prompt,bashrc,aliases,vimrc} $1@$2:~/
+	scp -p ~/.{bash_profile,bash_prompt,bashrc,gitconfig,gitattributes,gitignore,aliases,functions,vimrc} $1@$2:~/
 }
