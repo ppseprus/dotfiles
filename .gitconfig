@@ -38,6 +38,7 @@
 	cm = "commit -m"
 	amend = "commit --amend"
 	commend = "commit --amend --no-edit"
+	brm = "!f() { git rebase -i HEAD~$1; }; f"
 	st = "stash"
 	fm = "!f() { git log --decorate --oneline --date=short --grep=$1; }; f"
 
