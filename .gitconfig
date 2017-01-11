@@ -39,6 +39,7 @@
 	amend = "commit --amend"
 	commend = "commit --amend --no-edit"
 	st = "stash"
+	fm = "!f() { git log --decorate --oneline --date=short --grep=$1; }; f"
 
 [color]
 	# Use colors in Git commands that are capable of colored output when
