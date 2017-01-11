@@ -17,29 +17,9 @@ alias ws="cd ${development}/workspace"
 unset development
 
 # Shorthands for applications and commands
-alias h="history"
-
-# Shorthands for npm
-alias npml="npm list -g --depth=0"
-
-# Shorthands for git
 alias g="git"
-alias ginit="!git init && git commit -m “root” --allow-empty"
-alias gl="git log --decorate --oneline --graph -n 20"
-alias gltd="git log --decorate --oneline --graph --since=midnight"
-alias gb="git branch"
-alias gba="git branch --all"
-alias gco="git checkout"
-alias gs="git status"
-alias ga="git add"
-alias gai="git add -i"
-alias gc="git commit"
-alias gcm="git commit -m "
-alias amend="git commit --amend"
-alias commend="git commit --amend --no-edit"
-alias gp="git pull"
-alias gpo="git push origin master"
-alias gst="git stash"
+alias h="history"
+alias npml="npm list -g --depth=0"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1

@@ -23,6 +23,23 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
+[alias]
+	root = "!git init && git commit -m “Root” --allow-empty"
+	l = "log --decorate --oneline --graph -n 20"
+	today = "log --decorate --oneline --graph --since=midnight"
+	s = "status"
+	b = "branch"
+	ba = "branch --all"
+	co = "checkout"
+	a = "add"
+	ai = "add -i"
+	c = "commit"
+	ce = "commit --allow-empty-message"
+	cm = "commit -m"
+	amend = "commit --amend"
+	commend = "commit --amend --no-edit"
+	st = "stash"
+
 [color]
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
