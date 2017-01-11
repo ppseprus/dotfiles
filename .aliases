@@ -32,6 +32,7 @@ fi
 alias ls="ls ${colorflag} "
 alias la="ls -AFhlop"
 alias ld="ls -Ahlo | grep --color=never '^d'"
+alias lf="ls -Ahlo | grep --color=never '^-'"
 
 # Enable colored `grep` output
 alias grep="grep --color=auto"
