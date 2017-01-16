@@ -1,0 +1,22 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+	{
+		"key": "ctrl+shift+d",
+		"command": "editor.action.copyLinesDownAction",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "editor.action.addCommentLine",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+k",
+		"command": "editor.action.removeCommentLine",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+alt+z",
+		"command": "workbench.action.toggleZenMode"
+	}
+]

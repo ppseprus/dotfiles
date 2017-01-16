@@ -1,0 +1,12 @@
+{
+	"editor.insertSpaces": false,
+	"window.reopenFolders": "all",
+	"window.restoreFullscreen": true,
+	"files.associations": {
+		".vimrc": "bat"
+	},
+	"typescript.check.tscVersion": false,
+	"search.exclude": {
+		"**/node_modules": true
+	}
+}
