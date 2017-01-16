@@ -12,3 +12,6 @@ Thumbs.db
 
 # Compiled Python files
 *.pyc
+
+# IDE configuration folders
+.vscode
