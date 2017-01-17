@@ -1,12 +1,17 @@
 {
 	"editor.insertSpaces": false,
+	"editor.cursorStyle": "line",
+	"editor.cursorBlinking": "smooth",
+	"editor.scrollBeyondLastLine": false,
 	"window.reopenFolders": "all",
 	"window.restoreFullscreen": true,
 	"files.associations": {
 		".vimrc": "bat"
 	},
-	"typescript.check.tscVersion": false,
 	"search.exclude": {
 		"**/node_modules": true
-	}
+	},
+	"typescript.check.tscVersion": false,
+ 	"telemetry.enableTelemetry": false,
+	"telemetry.enableCrashReporter": false
 }
