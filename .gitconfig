@@ -28,6 +28,7 @@
 	l = "log --decorate --oneline --graph -n 20"
 	today = "log --decorate --oneline --graph --since=midnight"
 	s = "status"
+	pr = "pull --rebase"
 	b = "branch"
 	ba = "branch --all"
 	co = "checkout"
