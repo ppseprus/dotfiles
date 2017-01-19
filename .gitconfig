@@ -42,6 +42,7 @@
 	st = "stash"
 	pop = "stash pop"
 	ri = "!f() { git rebase -i HEAD~$1; }; f"
+	std = "!f() { git stash show -p stash@{$1}; }; f"
 	fm = "!f() { git log --decorate --oneline --date=short --grep=$1; }; f"
 
 [color]
