@@ -41,8 +41,19 @@
 	commend = "commit --amend --no-edit"
 	st = "stash"
 	pop = "stash pop"
+
+	# Rebase Interactively
+	# Usage `g ri <n>` will interactively rebase the last <n> commits.
 	ri = "!f() { git rebase -i HEAD~$1; }; f"
+
+	# STash Diff
+	# Usage: `g std <n>` will show the diff between the current state
+	# and the <n>th stash entry.
 	std = "!f() { git stash show -p stash@{$1}; }; f"
+
+	# Find Message
+	# Usage: `g fm <text>` will retrieve all commits that contain <text>
+	# in their commit message.
 	fm = "!f() { git log --decorate --oneline --date=short --grep=$1; }; f"
 
 [color]
